@@ -1,23 +1,18 @@
-import { useState } from 'react';
+import { Route, Routes } from 'react-router-dom';
 
-function App() {
-  const [count, setCount] = useState(0);
+import { RootLayout } from './components/layout/root-layout';
+import { Home } from './components/pages/home';
 
-  return (
-    <>
-      <div className='border'>
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className='text-green-400'>
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  );
-}
-
-export default App;
+export const App = () => (
+  <Routes>
+    <Route
+      path='/'
+      element={<RootLayout />}
+    >
+      <Route
+        index
+        element={<Home />}
+      />
+    </Route>
+  </Routes>
+);
