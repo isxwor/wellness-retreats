@@ -7,6 +7,15 @@ This React project is setup with Vite React template.
 - [TypeScript](https://www.typescriptlang.org/)
 - [Tailwind CSS](https://tailwindcss.com/)
 
+## Features
+
+- Responsive design
+- Filter by location and type
+- Search by name
+- Paginated results
+- Sharable links that include filter state, search query and page numbers
+  > using url query parameters
+
 ## Installation
 
 1. Clone the repository
