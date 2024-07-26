@@ -2,9 +2,13 @@ import heroImage from '#/assets/hero.jpg';
 
 import { Button } from '#/components/ui/button';
 import { SearchBox } from '#/components/search';
-import { RetreatCard } from '#/components/retreat-card';
 import { Filter } from '#/components/filter';
-import { Pagination } from '../pagination';
+import { RetreatsList } from '#/components/retreats-list';
+
+import { MapPinIcon } from '#/components/icons/map-pin';
+import { TagIcon } from '#/components/icons/tag';
+
+import { locationFilterOptions, tagFilterOptions } from '#/constants/filters';
 
 export const Home = () => (
   <>
@@ -16,10 +20,10 @@ export const Home = () => (
       />
       <div className='container relative flex h-full items-end py-8 md:py-16'>
         <div className='max-w-[566px] rounded-2xl bg-white p-10'>
-          <h1 className='font-heading text-5xl font-bold'>
+          <h1 className='scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl'>
             Discover Your Inner Peace
           </h1>
-          <p className='mt-2 font-heading text-gray-800'>
+          <p className='leading-7 mt-4 lg:mt-5'>
             Join us for a series of wellness retreats designed to help you find
             tranquility and rejuvenation.
           </p>
@@ -27,34 +31,32 @@ export const Home = () => (
         </div>
       </div>
     </div>
-    <div className='container pt-14'>
-      <div className='flex gap-4 justify-between flex-col md:flex-row'>
-        <div className='contents sm:flex gap-4'>
-          <Filter
-            name='Filter'
-            options={[
-              { label: 'Yoga', value: 'yoga' },
-              { label: 'Meditation', value: 'meditation' },
-            ]}
-          />
-          <Filter
-            name='Filter'
-            options={[
-              { label: 'Yoga', value: 'yoga' },
-              { label: 'Meditation', value: 'meditation' },
-            ]}
-          />
-        </div>
-        <SearchBox
-          className='w-full md:w-96'
-          placeHolder='Search retreats by title...'
+    <div className='container pt-14 flex gap-4 justify-between flex-col md:flex-row'>
+      <div className='contents sm:flex gap-4'>
+        <Filter
+          icon={<MapPinIcon className='size-4' />}
+          label='Filter location'
+          filterKey='location'
+          options={locationFilterOptions.map((loc) => ({
+            label: loc,
+            value: loc,
+          }))}
+        />
+        <Filter
+          icon={<TagIcon className='size-4' />}
+          label='Filter tag'
+          filterKey='filter'
+          options={tagFilterOptions.map((tag) => ({
+            label: tag,
+            value: tag,
+          }))}
         />
       </div>
+      <SearchBox
+        className='w-full md:w-96'
+        placeHolder='Search retreats by title...'
+      />
     </div>
-    <div className='container py-14 grid gap-8 grid-cols-1 lg:grid-cols-2'>
-      <RetreatCard />
-      <RetreatCard />
-    </div>
-    <Pagination className='pb-14' />
+    <RetreatsList className='container py-14' />
   </>
 );

@@ -5,7 +5,7 @@ export const Appbar = () => (
     <div className='container flex items-center justify-between'>
       <Link
         to='/'
-        className='font-medium text-2xl text-black'
+        className='text-2xl font-medium tracking-tight text-black'
       >
         Wellness Retreats
       </Link>
